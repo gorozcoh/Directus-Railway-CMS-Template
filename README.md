@@ -1,10 +1,16 @@
+<div align="center">
+  <img src="directus-logo-stacked.png" alt="Directus Logo" width="250" />
+</div>
+
 # Directus Railway CMS Template
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template)
 
-A production-ready, one-click deployment template for [Directus](https://directus.io) on [Railway](https://railway.app). Get a fully configured Directus backend with PostgreSQL database and Redis cache in minutes.
+A production-ready, one-click deployment template for [Directus](https://directus.io) on [Railway](https://railway.app).
+Get a fully configured Directus backend with PostgreSQL database and Redis cache in minutes.
 
-**Directus** lets you create, manage, and scale headless content. Design your data model, build powerful APIs, and manage content for anything from simple websites to complex applications.
+**Directus** lets you create, manage, and scale headless content. Design your data model, build powerful APIs, and
+manage content for anything from simple websites to complex applications.
 
 ## What's Included
 
@@ -16,7 +22,8 @@ A production-ready, one-click deployment template for [Directus](https://directu
 - **Extensions Marketplace** - Access to extensions and plugins for enhanced functionality
 - **Health Checks** - Built-in monitoring for Railway
 - **Admin User** - Automatically created on first deployment
-- **Frontend Starters** - Optional Next.js, Nuxt, Astro, and SvelteKit starters from [directus-labs/starters](https://github.com/directus-labs/starters)
+- **Frontend Starters** - Optional Next.js, Nuxt, Astro, and SvelteKit starters from
+  [directus-labs/starters](https://github.com/directus-labs/starters)
 - **Production Ready** - Configured with best practices for production use
 
 ## Use Cases
@@ -59,12 +66,16 @@ Set this as the `SECRET` environment variable in Railway.
 
 ### Apply CMS Backend Template (Default)
 
-By default, the template will automatically apply the official Directus CMS backend template on first deploy. The bootstrap script applies the CMS template after admin user creation using the `directus-template-cli` tool (same as the official CLI uses).
+By default, the template will automatically apply the official Directus CMS backend template on first deploy. The
+bootstrap script applies the CMS template after admin user creation using the `directus-template-cli` tool (same as the
+official CLI uses).
 
 **Template Options:**
 
-- **CMS Template (default)**: The CMS template is loaded by default - includes pre-configured collections (pages, articles, etc.)
-- **Blank Instance**: Set `DIRECTUS_TEMPLATE=` (empty) or `DIRECTUS_TEMPLATE=blank` to start with a clean Directus instance
+- **CMS Template (default)**: The CMS template is loaded by default - includes pre-configured collections (pages,
+  articles, etc.)
+- **Blank Instance**: Set `DIRECTUS_TEMPLATE=` (empty) or `DIRECTUS_TEMPLATE=blank` to start with a clean Directus
+  instance
 
 If you want a blank instance instead, set `DIRECTUS_TEMPLATE` to an empty value in your Railway environment variables.
 
@@ -157,7 +168,8 @@ EMAIL_SMTP_PASSWORD=your-password
    EOF
    ```
 
-   **Note**: This `.env` file is only for local development with Docker Compose. Railway uses environment variables set in the Railway dashboard, not a `.env` file.
+   **Note**: This `.env` file is only for local development with Docker Compose. Railway uses environment variables set
+   in the Railway dashboard, not a `.env` file.
 
 3. Start services:
 
@@ -243,7 +255,8 @@ EMAIL_SMTP_PASSWORD=your-password
 
 ## Issues & Bug Reports
 
-This is a maintained project. If you encounter issues or bugs, please submit them via GitHub Issues. We review all issues and address bugs as needed.
+This is a maintained project. If you encounter issues or bugs, please submit them via GitHub Issues. We review all
+issues and address bugs as needed.
 
 ## Why This Template?
 
@@ -252,14 +265,17 @@ This template provides everything you need to get Directus running in production
 - **One-Click Deploy**: Deploy with a single click - no manual configuration needed
 - **Production Ready**: Pre-configured with PostgreSQL, Redis, and best practices
 - **Automatic Setup**: Database schema, admin user, and CMS template applied automatically
-- **Private Networking**: Database and cache communication over Railway's private network (no egress fees) - automatically configured when using Railway's service reference variables
+- **Private Networking**: Database and cache communication over Railway's private network (no egress fees) -
+  automatically configured when using Railway's service reference variables
 - **Scalable**: Built to scale horizontally and vertically as your needs grow
 - **Secure**: Pre-configured with security best practices and private networking
 
 ## Dependencies
 
-- **Directus**: [Official Website](https://directus.io) | [Documentation](https://docs.directus.io) | [GitHub](https://github.com/directus/directus)
-- **Frontend Starters**: [directus-labs/starters](https://github.com/directus-labs/starters) - Next.js, Nuxt, Astro, SvelteKit
+- **Directus**: [Official Website](https://directus.io) | [Documentation](https://docs.directus.io) |
+  [GitHub](https://github.com/directus/directus)
+- **Frontend Starters**: [directus-labs/starters](https://github.com/directus-labs/starters) - Next.js, Nuxt, Astro,
+  SvelteKit
 - **Railway**: [Railway Platform](https://railway.app) - Deployment platform
 
 ## License
@@ -268,4 +284,5 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Related Projects
 
-- [Directus Starters](https://github.com/directus-labs/starters) - Frontend starter templates for Next.js, Nuxt, Astro, and SvelteKit
+- [Directus Starters](https://github.com/directus-labs/starters) - Frontend starter templates for Next.js, Nuxt, Astro,
+  and SvelteKit
