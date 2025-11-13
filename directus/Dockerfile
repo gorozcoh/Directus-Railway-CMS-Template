@@ -3,15 +3,15 @@ FROM directus/directus:11.13.0
 # Switch to root to set up scripts and permissions
 USER root
 
-# Ensure extensions directory exists
-RUN mkdir -p /directus/extensions
+# Ensure extensions and uploads directories exist
+RUN mkdir -p /directus/extensions /directus/uploads
 
-# Copy scripts for validation and startup
+# Copy scripts
 COPY scripts/ /directus/scripts/
 
 # Make scripts executable and set proper ownership
 RUN chmod +x /directus/scripts/*.sh && \
-    chown -R node:node /directus/scripts
+    chown -R node:node /directus/scripts /directus/extensions /directus/uploads
 
 # Set default database client (PostgreSQL)
 ENV DB_CLIENT=pg
@@ -20,3 +20,6 @@ ENV DB_CLIENT=pg
 USER node
 
 WORKDIR /directus
+
+# Use our startup script as entrypoint
+ENTRYPOINT ["/directus/scripts/start-directus.sh"]

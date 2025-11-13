@@ -5,7 +5,6 @@
     "dockerfilePath": "directus/Dockerfile"
   },
   "deploy": {
-    "startCommand": "sh /directus/scripts/start-directus.sh",
     "healthcheckPath": "/server/health",
     "healthcheckTimeout": 300,
     "restartPolicyType": "ON_FAILURE",

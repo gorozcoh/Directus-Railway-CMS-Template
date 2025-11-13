@@ -44,13 +44,74 @@ fi
 ADMIN_EMAIL="${ADMIN_EMAIL:-admin@example.com}"
 ADMIN_PASSWORD="${ADMIN_PASSWORD:-change-this-password}"
 
-echo ""
-echo "Loading CMS backend template..."
-
 # Since this script runs inside the Directus container, we can use localhost
 # Use PORT env var (Railway sets this automatically, may be 8080 or 8055)
 DIRECTUS_PORT="${PORT:-8055}"
 directus_url="http://localhost:${DIRECTUS_PORT}"
+
+# Check if template is already applied by checking for a key collection
+# The CMS template includes a "pages" collection - if it exists, template is already applied
+echo "Checking if CMS template is already applied..."
+node -e "
+const http = require('http');
+
+const loginData = JSON.stringify({
+  email: process.env.ADMIN_EMAIL,
+  password: process.env.ADMIN_PASSWORD
+});
+
+const port = process.env.PORT || 8055;
+
+const loginOptions = {
+  hostname: 'localhost',
+  port: port,
+  path: '/auth/login',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Content-Length': Buffer.byteLength(loginData)
+  }
+};
+
+http.request(loginOptions, (res) => {
+  let data = '';
+  res.on('data', (chunk) => { data += chunk; });
+  res.on('end', () => {
+    if (res.statusCode === 200) {
+      try {
+        const token = JSON.parse(data).data.access_token;
+
+        // Check for pages collection
+        const checkOptions = {
+          hostname: 'localhost',
+          port: port,
+          path: '/collections/pages',
+          method: 'GET',
+          headers: {
+            'Authorization': \`Bearer \${token}\`
+          }
+        };
+
+        http.request(checkOptions, (checkRes) => {
+          process.exit(checkRes.statusCode === 200 ? 0 : 1);
+        }).on('error', () => process.exit(1)).end();
+      } catch (e) {
+        process.exit(1);
+      }
+    } else {
+      process.exit(1);
+    }
+  });
+}).on('error', () => process.exit(1)).end(loginData);
+" > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+  echo "CMS template is already applied (found 'pages' collection). Skipping template application."
+  exit 0
+fi
+
+echo ""
+echo "CMS template not found. Loading CMS backend template..."
 echo "Using Directus URL: $directus_url"
 
 # Use GitHub template type - CMS template from directus-labs/starters
