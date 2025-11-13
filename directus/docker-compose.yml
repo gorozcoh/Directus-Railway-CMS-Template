@@ -32,6 +32,10 @@ services:
     build:
       context: ..
       dockerfile: directus/Dockerfile
+      args:
+        # Override Directus version by setting DIRECTUS_VERSION environment variable
+        # Default: 11.13.0 (pinned for stability - update this in Dockerfile to get newer versions)
+        DIRECTUS_VERSION: ${DIRECTUS_VERSION:-11.13.2}
     ports:
       - ${DIRECTUS_PORT:-8055}:8055
     volumes:
@@ -77,10 +81,8 @@ services:
       # Cookie Configuration
       REFRESH_TOKEN_COOKIE_SECURE: ${REFRESH_TOKEN_COOKIE_SECURE:-false}
       REFRESH_TOKEN_COOKIE_SAME_SITE: ${REFRESH_TOKEN_COOKIE_SAME_SITE:-lax}
-      REFRESH_TOKEN_COOKIE_DOMAIN: ${REFRESH_TOKEN_COOKIE_DOMAIN:-localhost}
       SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
       SESSION_COOKIE_SAME_SITE: ${SESSION_COOKIE_SAME_SITE:-lax}
-      SESSION_COOKIE_DOMAIN: ${SESSION_COOKIE_DOMAIN:-localhost}
 
       # Extensions Configuration
       EXTENSIONS_PATH: ${EXTENSIONS_PATH:-./extensions}
