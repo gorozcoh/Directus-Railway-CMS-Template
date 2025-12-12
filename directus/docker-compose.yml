@@ -34,8 +34,7 @@ services:
       dockerfile: directus/Dockerfile
       args:
         # Override Directus version by setting DIRECTUS_VERSION environment variable
-        # Default: 11.13.0 (pinned for stability - update this in Dockerfile to get newer versions)
-        DIRECTUS_VERSION: ${DIRECTUS_VERSION:-11.13.2}
+        DIRECTUS_VERSION: ${DIRECTUS_VERSION:-11.14.0}
     ports:
       - ${DIRECTUS_PORT:-8055}:8055
     volumes:
