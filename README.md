@@ -15,7 +15,7 @@ build powerful REST and GraphQL APIs, and manage content for anything from simpl
 
 ## What's Included
 
-- **Directus** (v11.13.2) - Latest stable version with REST + GraphQL API
+- **Directus** (latest) - Auto-updates to latest version with REST + GraphQL API
 - **PostgreSQL Database** - Automatically provisioned and linked via Railway's private network (zero egress fees)
 - **Redis Cache** - Enabled by default for caching and WebSocket support
 - **Railway S3 Storage Bucket** - Scalable, persistent file storage for multi-replica deployments

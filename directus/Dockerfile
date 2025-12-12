@@ -1,4 +1,4 @@
-ARG DIRECTUS_VERSION=11.13.2
+ARG DIRECTUS_VERSION=latest
 FROM directus/directus:${DIRECTUS_VERSION}
 
 # Switch to root to set up scripts and permissions
